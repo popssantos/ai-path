@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AI Path">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj48cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjMUE3M0U4Ii8+PHRleHQgeD0iOTAiIHk9IjEyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjkwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFJPC90ZXh0Pjwvc3ZnPg==">
+<title>AI Mastery Path</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+:root{--bg:#F5F5F0;--wh:#FFF;--s2:#EEEEE8;--bd:#D4D4CC;--bl:#E8E8E2;--tx:#1A1A1A;--t2:#4A4A4A;--tm:#7A7A7A;--ac:#1A73E8;--al:#E8F0FE;--ad:#1557B0;--gn:#0D904F;--gl:#E6F4EA;--or:#E8710A;--ol:#FEF7E0;--rd:#D93025;--rl:#FCE8E6;--pr:#7B1FA2;--pl:#F3E8FD;--r:14px;--rs:10px;--sh:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);--sm:0 4px 12px rgba(0,0,0,.08)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Source Sans 3',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;-webkit-font-smoothing:antialiased}
+.app{max-width:500px;margin:0 auto;min-height:100vh;position:relative;padding-bottom:90px}
+.hdr{background:var(--wh);border-bottom:1px solid var(--bl);padding:52px 20px 16px;position:sticky;top:0;z-index:100}
+.hr{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.logo{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:8px}
+.logo-ico{width:28px;height:28px;background:var(--ac);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+.strk{display:flex;align-items:center;gap:5px;background:var(--ol);padding:5px 12px;border-radius:20px;font-size:13px;font-weight:600;color:var(--or)}
+.pi{display:flex;justify-content:space-between;margin-bottom:6px}
+.plb{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--tm);text-transform:uppercase}
+.ppc{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--ac)}
+.pt{height:5px;background:var(--s2);border-radius:5px;overflow:hidden;margin-top:4px}
+.pb{height:100%;background:var(--ac);border-radius:5px;transition:width .6s ease}
+.scr{display:none;padding:20px}.scr.on{display:block}
+.tc{background:var(--wh);border:1px solid var(--bl);border-radius:var(--r);padding:24px 20px;margin-bottom:16px;box-shadow:var(--sh);border-top:4px solid var(--ac)}
+.te{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac);margin-bottom:10px}
+.tw{font-size:13px;color:var(--tm);margin-bottom:6px}
+.ttl{font-size:21px;font-weight:700;line-height:1.3;margin-bottom:16px}
+.tmeta{display:flex;gap:16px;margin-bottom:20px}
+.mi{font-size:13px;color:var(--t2)}
+.bp{display:block;width:100%;padding:15px;background:var(--ac);color:#fff;border:none;border-radius:var(--rs);font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:center;-webkit-appearance:none}
+.bp:active{opacity:.85}
+.bs{display:block;width:100%;padding:15px;background:var(--s2);color:var(--tx);border:1px solid var(--bd);border-radius:var(--rs);font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:center;-webkit-appearance:none}
+.bsk{display:block;width:100%;padding:13px;background:transparent;color:var(--tm);border:1px dashed var(--bd);border-radius:var(--rs);font-size:14px;font-weight:500;cursor:pointer;text-align:center;-webkit-appearance:none;margin-top:10px}
+.sr{display:flex;gap:10px;margin-bottom:16px}
+.sc{flex:1;background:var(--wh);border:1px solid var(--bl);border-radius:var(--rs);padding:14px 10px;text-align:center;box-shadow:var(--sh)}
+.sn{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--ac)}
+.sn.g{color:var(--gn)}.sn.o{color:var(--or)}
+.sl{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+.lnv{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.bbk{display:inline-flex;align-items:center;gap:4px;background:none;border:none;color:var(--ac);font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;cursor:pointer;padding:8px 0}
+.lar{display:flex;gap:8px}
+.la{width:36px;height:36px;border-radius:50%;border:1px solid var(--bd);background:var(--wh);color:var(--tx);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-appearance:none}
+.la:disabled{opacity:.3;cursor:default}
+.ldi{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--tm);text-align:center;margin-bottom:16px}
+.lb{margin-bottom:28px}
+.bla{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:14px}
+.bla.le{background:var(--al);color:var(--ad)}.bla.do{background:var(--pl);color:var(--pr)}.bla.sh{background:var(--gl);color:var(--gn)}
+.lt{font-size:16px;line-height:1.75;color:var(--tx)}
+.lt p{margin-bottom:14px}
+.ct{background:var(--al);border-left:4px solid var(--ac);padding:16px 18px;border-radius:0 var(--rs) var(--rs) 0;margin:16px 0;font-size:15px;line-height:1.65}
+.cd{background:#1E1E1E;color:#D4D4D4;border-radius:var(--rs);padding:18px;margin:16px 0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.cdl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);margin-bottom:8px}
+.ex{background:var(--wh);border:1px solid var(--bl);border-radius:var(--r);padding:20px;box-shadow:var(--sh)}
+.ex h3{font-size:17px;font-weight:700;margin-bottom:14px}
+.ol{list-style:none;counter-reset:st}
+.ol li{counter-increment:st;padding:12px 0 12px 40px;position:relative;font-size:15px;line-height:1.55;color:var(--t2);border-bottom:1px solid var(--bl)}
+.ol li:last-child{border-bottom:none}
+.ol li::before{content:counter(st);position:absolute;left:0;top:12px;width:26px;height:26px;border-radius:50%;background:var(--al);color:var(--ac);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.gb{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--wh);border:2px solid var(--ac);color:var(--ac);border-radius:var(--rs);font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:600;cursor:pointer;margin-top:14px;text-decoration:none;-webkit-appearance:none}
+.ph{margin-top:12px;font-size:13px;color:var(--tm);line-height:1.5;background:var(--s2);padding:12px 14px;border-radius:var(--rs)}
+.ph strong{color:var(--t2)}
+.ckl{margin:20px 0}
+.ckr{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--bl);cursor:pointer}
+.ckr:last-child{border-bottom:none}
+.ckb{width:24px;height:24px;min-width:24px;border-radius:7px;border:2px solid var(--bd);background:var(--wh);display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s;font-size:14px;color:transparent}
+.ckr.dn .ckb{background:var(--gn);border-color:var(--gn);color:#fff}
+.ckt{font-size:15px;line-height:1.5;transition:all .15s}
+.ckr.dn .ckt{color:var(--tm);text-decoration:line-through}
+.cb{width:100%;padding:16px;background:var(--s2);color:var(--tm);border:2px dashed var(--bd);border-radius:var(--rs);font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:600;cursor:default;margin-top:20px;-webkit-appearance:none}
+.cb.ry{background:var(--gn);color:#fff;border:2px solid var(--gn);cursor:pointer}
+.cb.ad{background:var(--gl);color:var(--gn);border:2px solid var(--gn);cursor:default}
+.ov{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:1000}
+.ov.on{display:flex;justify-content:center;align-items:center}
+.ovc{background:var(--wh);border-radius:var(--r);padding:36px 28px;text-align:center;max-width:340px;width:88%;box-shadow:var(--sm)}
+.ovc h2{font-size:22px;font-weight:700;margin-bottom:6px}
+.ovc .su{color:var(--tm);font-size:14px;margin-bottom:22px}
+.ovs{display:flex;justify-content:center;gap:36px;margin-bottom:24px}
+.ovv{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:700;color:var(--ac)}
+.ovl{font-size:11px;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.rt{font-size:22px;font-weight:700;margin-bottom:20px}
+.pg{margin-bottom:24px}
+.phd{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pbd{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;padding:3px 9px;border-radius:5px;text-transform:uppercase;color:#fff}
+.pbd.p1{background:var(--ac)}.pbd.p2{background:var(--pr)}.pbd.p3{background:var(--or)}.pbd.p4{background:var(--gn)}
+.pnm{font-size:15px;font-weight:600}
+.wc{background:var(--wh);border:1px solid var(--bl);border-radius:var(--rs);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh);cursor:pointer}
+.wc:active{background:var(--s2)}.wc.cm{border-left:4px solid var(--gn)}.wc.cu{border-left:4px solid var(--ac)}
+.wi{font-size:20px}.wif{flex:1}.wn{font-size:14px;font-weight:600}.wd{font-size:12px;color:var(--tm);margin-top:2px}
+.ws{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--tm)}
+.wc.cm .ws{color:var(--gn)}.wc.cu .ws{color:var(--ac)}
+.dl{margin:0 0 8px 32px}
+.dr{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--s2);border-radius:8px;margin-bottom:4px;cursor:pointer;font-size:13px;color:var(--t2)}
+.dr:active{background:var(--bl)}
+.dr .di{width:20px;height:20px;border-radius:50%;border:2px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;min-width:20px}
+.dr.dn .di{background:var(--gn);border-color:var(--gn);color:#fff}
+.dr.sk .di{background:var(--ol);border-color:var(--or);color:var(--or)}
+.dr .dt{flex:1}
+.st2{font-size:22px;font-weight:700;margin-bottom:20px}
+.sg{margin-bottom:24px}
+.sgt{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);margin-bottom:10px}
+.si{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--wh);border:1px solid var(--bl);border-radius:var(--rs);margin-bottom:6px;box-shadow:var(--sh)}
+.sin{font-size:15px}.siv{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--ac)}
+.rb{width:100%;padding:14px;background:var(--wh);border:1px solid var(--rd);color:var(--rd);border-radius:var(--rs);font-size:14px;font-weight:600;cursor:pointer;margin-top:16px;-webkit-appearance:none}
+.bn{position:fixed;bottom:0;left:0;right:0;background:var(--wh);border-top:1px solid var(--bd);z-index:200}
+.bni{display:flex;justify-content:space-around;max-width:500px;margin:0 auto;padding:8px 0;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+.nb{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--tm);cursor:pointer;padding:6px 20px;font-family:'Source Sans 3',sans-serif;-webkit-appearance:none}
+.nb.on{color:var(--ac)}.nb .ni{font-size:20px}.nb .nt{font-size:10px;font-weight:600;letter-spacing:.3px}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="hdr">
+  <div class="hr">
+    <div class="logo"><div class="logo-ico">AI</div>PATH</div>
+    <div class="strk">&#128293; <span id="sn">0</span> days</div>
+  </div>
+  <div class="pi"><span class="plb" id="pl">Phase 1</span><span class="ppc" id="pp">0%</span></div>
+  <div class="pt"><div class="pb" id="pb" style="width:0%"></div></div>
+</div>
+
+<div class="scr on" id="s0">
+  <div class="tc" id="tc">
+    <div class="te">TODAY'S LESSON</div>
+    <div class="tw" id="tw"></div>
+    <div class="ttl" id="tt"></div>
+    <div class="tmeta"><span class="mi" id="tm"></span><span class="mi" id="td"></span></div>
+    <button class="bp" id="sb" onclick="openL(S.cur)">Start Lesson</button>
+    <button class="bsk" id="skb" onclick="skipDay()">Skip for now</button>
+  </div>
+  <div class="sr">
+    <div class="sc"><div class="sn g" id="sd">0</div><div class="sl">Done</div></div>
+    <div class="sc"><div class="sn" id="sle">40</div><div class="sl">Left</div></div>
+    <div class="sc"><div class="sn o" id="sw">W1</div><div class="sl">Week</div></div>
+  </div>
+</div>
+
+<div class="scr" id="s1">
+  <div class="lnv"><button class="bbk" onclick="goH()">&#8592; Back</button><div class="lar"><button class="la" id="lp" onclick="pvL()">&#8249;</button><button class="la" id="ln" onclick="nxL()">&#8250;</button></div></div>
+  <div class="ldi" id="ldi"></div>
+  <div id="lbd"></div>
+  <div class="ckl" id="cka"></div>
+  <button class="cb" id="db" onclick="finD()">Complete all tasks first</button>
+</div>
+
+<div class="scr" id="s2">
+  <div class="rt">Your Roadmap</div><div id="rbd"></div>
+</div>
+
+<div class="scr" id="s3">
+  <div class="st2">Settings</div>
+  <div class="sg"><div class="sgt">Notifications</div>
+    <div class="si"><span class="sin">Daily reminder</span><span class="siv">6:00 AM</span></div>
+    <div class="si" onclick="eNot()" style="cursor:pointer"><span class="sin">Notifications</span><span class="siv" id="nl">Enable</span></div>
+  </div>
+  <div class="sg"><div class="sgt">Progress</div>
+    <div class="si"><span class="sin">Days completed</span><span class="siv" id="xd">0</span></div>
+    <div class="si"><span class="sin">Days skipped</span><span class="siv" id="xs">0</span></div>
+    <div class="si"><span class="sin">Streak</span><span class="siv" id="xk">0</span></div>
+    <div class="si"><span class="sin">Started</span><span class="siv" id="xst">-</span></div>
+  </div>
+  <button class="rb" onclick="resetA()">Reset All Progress</button>
+</div>
+
+<div class="ov" id="ov">
+  <div class="ovc">
+    <div style="font-size:44px;margin-bottom:14px">&#127919;</div>
+    <h2>Day Complete!</h2>
+    <p class="su" id="om">Next lesson ready.</p>
+    <div class="ovs"><div><div class="ovv" id="os">1</div><div class="ovl">Streak</div></div><div><div class="ovv" id="ot">1/40</div><div class="ovl">Total</div></div></div>
+    <button class="bp" onclick="clOv()">Continue</button>
+  </div>
+</div>
+
+<div class="bn"><div class="bni">
+  <button class="nb on" id="n0" onclick="nav(0)"><span class="ni">&#9673;</span><span class="nt">Today</span></button>
+  <button class="nb" id="n2" onclick="nav(2)"><span class="ni">&#9639;</span><span class="nt">Roadmap</span></button>
+  <button class="nb" id="n3" onclick="nav(3)"><span class="ni">&#9881;</span><span class="nt">Settings</span></button>
+</div></div>
+</div>
+
+<script>
+// CURRICULUM — REORDERED: Task mgmt first, then notes, then APIs
+var C=[
+// === W1: PROMPTING ===
+{w:1,d:1,p:1,title:"Asking vs. Instructing",wk:"Week 1 \u00b7 Prompting That Works",time:"30 min",dev:"iPhone",
+learn:'<p>Most people use AI like Google: vague question, hope for the best. The gap between a bad and great prompt is like "handle the sales stuff" vs. a proper brief.</p><div class="ct"><strong>Level 1:</strong> "How are my sales?"<br><br><strong>Level 2:</strong> "Analyze this sales data, tell me which products underperform."<br><br><strong>Level 3:</strong> "You are a brewery sales analyst. I\'m uploading monthly sales by SKU for Cervecer\u00eda Allende. For each product: compare to 3-month average. Flag anything down >15%. Suggest one action per flagged item for my sales rep. Format as a table."</div><p>Level 3 gives Gemini: <strong>role</strong>, <strong>context</strong>, <strong>criteria</strong>, <strong>action</strong>, <strong>format</strong>.</p>',
+ex:{t:"Write 3 Prompts: Bad \u2192 Good \u2192 Great",s:["Open a real sales spreadsheet in Google Sheets.","Open gemini.google.com. Write a Level 1 prompt.","Write a Level 2 with more direction.","Write a Level 3: role, context, criteria, action, format.","Compare all three. Save the Level 3."],cp:"I want to practice writing better prompts. I\'ll share sales data and try three prompt levels. Help me improve each one."},
+ship:"Save your Level 3 prompt in a Google Doc called \'My AI Prompts\'.",
+checks:["Wrote Level 1 and saw weak output","Wrote Level 2 and saw improvement","Wrote Level 3 with all 5 components","Saved to Google Docs"]},
+
+{w:1,d:2,p:1,title:"Gemini Gems: Reusable AI Roles",wk:"Week 1 \u00b7 Prompting That Works",time:"30 min",dev:"iPhone",
+learn:'<p>In Gemini, you can save roles as <strong>Gems</strong> \u2014 custom AI characters with your instructions baked in. No re-typing prompts.</p><div class="ct"><strong>How:</strong> Gemini sidebar \u2192 Gem manager \u2192 Create. Add identity, context, rules, output style. Every conversation with this Gem starts with your instructions already loaded.</div>',
+ex:{t:"Build Your Brewery Analyst Gem",s:["Open Gemini. Find Gems in the sidebar.","Create \'Brewery Analyst\' with: Allende products, KPIs, rules.","Add: always flag underperformers, compare to averages, bilingual.","Test by chatting with the Gem and uploading data.","Iterate until it consistently gives useful analysis."],cp:"Help me build instructions for a Gemini Gem called \'Brewery Operations Analyst\' for Cervecer\u00eda Allende."},
+ship:"Gem saved and accessible in one tap.",
+checks:["Created Gem with full instructions","Included real KPIs","Tested with real data","Gem accessible from Gemini sidebar"]},
+
+{w:1,d:3,p:1,title:"Structured Outputs",wk:"Week 1 \u00b7 Prompting That Works",time:"30 min",dev:"iPhone",
+learn:'<p>Control exactly how Gemini formats output. The trick: give an example with fake data. Gemini copies the format with real data.</p><div class="ct"><strong>Google bonus:</strong> Ask Gemini to create a Google Doc or Sheet from its analysis. "Put this in a Google Sheet with tabs for each section."</div><div class="cdl">EXAMPLE TEMPLATE:</div><div class="cd">\ud83d\udcca DAILY BRIEF \u2014 [Date]\n\n\ud83d\udd34 UNDERPERFORMING\n| Product | This Mo | Avg | Gap | Action |\n\n\u26a0\ufe0f INACTIVE CLIENTS (15+ days)\n- Client X \u2014 last: Jan 15\n\n\ud83d\udccb TOP 3 PRIORITIES\n1. ...</div>',
+ex:{t:"Design Your Daily Brief Format",s:["Design what you want to see every morning in 2 minutes.","Create a custom template for YOUR business.","Add it to your Brewery Gem instructions.","Test with real data.","Ask Gemini to export to Google Sheets."],cp:null},
+ship:"Template added to your Gem. It always outputs in your format now.",
+checks:["Designed daily brief template","Added to Gem instructions","Tested with real data","Exported to Google Sheets"]},
+
+{w:1,d:4,p:1,title:"Chain-of-Thought Reasoning",wk:"Week 1 \u00b7 Prompting That Works",time:"30 min",dev:"iPhone",
+learn:'<p>You need to trust Gemini\'s answers. Chain-of-thought makes it show its work.</p><div class="ct"><strong>Magic phrase:</strong> "Think step by step. Show reasoning before your recommendation."<br><br>If Gemini makes a wrong assumption, you see it immediately instead of trusting a bad answer.</div>',
+ex:{t:"Analyze a Brew Batch Step by Step",s:["In your Brewery Gem: \'85kg pilsner malt for 500L IPA. Think step by step: is this normal?\'","Check the math. Does it use realistic benchmarks?","Try: \'Batch cost $X, selling price $Y/liter. Walk through the margin.\'","Add \'Always show step-by-step reasoning\' to your Gem."],cp:null},
+ship:"Gem now always shows its reasoning. Trust level: much higher.",
+checks:["Tested chain-of-thought with malt usage","Verified reasoning was checkable","Tested cost analysis","Updated Gem instructions"]},
+
+{w:1,d:5,p:1,title:"Multi-Step Analysis Pipeline",wk:"Week 1 \u00b7 Prompting That Works",time:"45 min",dev:"iPhone",
+learn:'<p>Week 1 capstone. Everything combined in one analysis: underperformers \u2192 inactive clients \u2192 ranked opportunities \u2192 sales rep messages.</p><div class="ct">One prompt. Four steps chained. Each feeds the next. Ask Gemini to output as a Google Doc.</div>',
+ex:{t:"Full Sales Pipeline",s:["Gather a real month of sales data in Sheets.","Open your Brewery Gem.","Run the 4-step pipeline with your output template.","Ask Gemini to create a Google Doc with results.","Rate it 1-10. Note what to fix."],cp:"Analyze this month\'s sales: (1) flag underperformers vs 3-month avg, (2) find inactive clients, (3) rank top 5 opportunities, (4) draft rep messages. Think step by step. Output as structured brief."},
+ship:"Save pipeline prompt. This is V1. We automate it in Week 4.",
+checks:["Ran 4-step analysis on real data","All techniques combined","Exported to Google Doc","Rated and noted improvements"]},
+
+// === W2: TASK MANAGEMENT (REPLACE NOTION) ===
+{w:2,d:1,p:1,title:"Why Notion Failed You",wk:"Week 2 \u00b7 Replace Notion: Tasks",time:"30 min",dev:"iPhone",
+learn:'<p>Notion required YOU to organize everything: create databases, tag items, maintain views. That\'s overhead, not productivity.</p><div class="ct"><strong>The AI approach:</strong> You TELL the system what happened or needs to happen. The AI organizes it. You never manually categorize, tag, or sort.<br><br><strong>Your new stack (all free):</strong><br>\u2022 Google Sheets = database<br>\u2022 Google Forms = quick input from iPhone<br>\u2022 Apps Script = automation<br>\u2022 Gemini = intelligence<br>\u2022 Gmail = delivery</div>',
+ex:{t:"Design Your Task System",s:["List everything you used Notion for. Be honest about what you actually used vs. set up and forgot.","Per task: what\'s the minimum data? (Title, due date, status, project. That\'s probably it.)","Create a Google Sheet with tabs: Active Tasks, Completed, Notes.","Design column headers for Active Tasks: Title, Due, Category, Priority, Project, Created, Status.","How will you add tasks? We\'ll use Google Forms \u2014 one tap from home screen."],cp:"Help me design a task system in Google Sheets replacing Notion. Key: I tell the AI, it organizes. Minimal fields only."},
+ship:"Google Sheet created with your task structure. Tomorrow we build the input.",
+checks:["Listed real Notion usage (honest assessment)","Minimal data model defined","Google Sheet created with tabs","Column headers set up"]},
+
+{w:2,d:2,p:1,title:"Google Forms: 10-Second Task Capture",wk:"Week 2 \u00b7 Replace Notion: Tasks",time:"40 min",dev:"Mac",
+learn:'<p>The #1 reason task systems die: too much friction to add a task. Google Forms on your home screen = 10 seconds.</p><div class="ct"><strong>One field.</strong> That\'s it. A single text box: "What needs to happen?" You type naturally: "Follow up with Client X about IPA order by Friday." Apps Script + Gemini parse it into structured data automatically.</div>',
+ex:{t:"Build the Capture Form",s:["Create a Google Form with one field: \'What needs to happen?\' (long text).","Link it to your Active Tasks Google Sheet.","Bookmark the form on your iPhone home screen (Share \u2192 Add to Home Screen).","Test: submit 5 real tasks from your current workload.","Verify they appear in the Sheet."],cp:null},
+ship:"Form on your home screen. Start using it today for every task.",
+checks:["Form created with single text field","Linked to Active Tasks sheet","On iPhone home screen","Tested with 5 real tasks","Data appears in Sheet"]},
+
+{w:2,d:3,p:1,title:"Auto-Parse Tasks with Gemini",wk:"Week 2 \u00b7 Replace Notion: Tasks",time:"50 min",dev:"Mac",
+learn:'<p>Raw form submissions are messy. Today: Apps Script triggers on each submission and uses Gemini API to parse your natural language into structured fields.</p><div class="ct"><strong>You type:</strong> "Call brewery supplier about late malt delivery, urgent, need by Wednesday"<br><br><strong>Gemini extracts:</strong> Title: Call brewery supplier re: late malt delivery | Due: Wednesday | Category: Operations | Priority: High | Project: Allende</div>',
+ex:{t:"Build the Auto-Parser",s:["Open your Sheet \u2192 Extensions \u2192 Apps Script.","Get a Gemini API key from aistudio.google.com (free tier).","Ask Gemini: \'Write Apps Script that triggers on form submission, sends the text to Gemini API to extract title, due date, category, priority, and project, then writes parsed data to the correct columns.\'","Paste and run. Submit a test task from your Form.","Check: did it parse correctly? Iterate with Gemini until it works."],cp:null},
+ship:"Every task you submit is auto-parsed into structured data. No manual organizing.",
+checks:["Got Gemini API key","Apps Script triggers on form submit","Gemini parses natural language correctly","Writes to correct columns","Works in English and Spanish"]},
+
+{w:2,d:4,p:1,title:"Morning Task Review Email",wk:"Week 2 \u00b7 Replace Notion: Tasks",time:"45 min",dev:"Mac",
+learn:'<p>Every morning at 5:50 AM: an email telling you what matters today. Not a list of everything \u2014 a smart, prioritized briefing.</p><div class="ct"><strong>Apps Script reads your tasks \u2192 filters overdue + today + this week \u2192 sends to Gemini for prioritization \u2192 emails you a formatted brief.</strong><br><br>Gemini adds judgment: "Your top 3 priorities today are X, Y, Z because..."</div>',
+ex:{t:"Build the Morning Review",s:["Ask Gemini: \'Write Apps Script that reads Active Tasks, filters overdue and due-today items, sends them to Gemini API for top-3 prioritization, and emails me an HTML summary.\'","Add a daily trigger at 5:50 AM (Extensions \u2192 Apps Script \u2192 Triggers).","Test manually first.","Check the email on your iPhone \u2014 is it useful in 1 minute?","Iterate the email format until perfect."],cp:null},
+ship:"Morning review running automatically. Check it tomorrow at 6 AM.",
+checks:["Script reads and filters tasks","Gemini prioritizes intelligently","Email format is clean","Trigger set for 5:50 AM","Tested successfully"]},
+
+{w:2,d:5,p:1,title:"Task Completion & Weekly Summary",wk:"Week 2 \u00b7 Replace Notion: Tasks",time:"45 min",dev:"Mac",
+learn:'<p>Complete a task \u2192 it moves to your Completed tab with a timestamp. Every Friday: an automatic summary of what you accomplished.</p><div class="ct"><strong>Two ways to complete:</strong><br>1. Open Sheet, change status to "Done" (quick)<br>2. A "Done" Google Form: type what you finished, Apps Script finds and moves it<br><br><strong>Friday summary:</strong> Gemini generates a narrative: "This week you completed 18 tasks. Key wins: closed the Q1 contract, resolved the supplier issue..."</div>',
+ex:{t:"Build Completion + Weekly Summary",s:["Create a \'Complete Task\' Google Form (one field: what did you finish?).","Apps Script: match text to active task, move to Completed tab with timestamp.","Build Friday summary: Apps Script + Gemini that counts completions, identifies wins, flags slips.","Schedule Friday summary for 5 PM.","Remove Notion from your iPhone home screen."],cp:null},
+ship:"Full task lifecycle working. Notion is off your phone. Two-week trial starts.",
+checks:["Completion form works","Tasks move to Completed with timestamps","Friday summary generates automatically","Gemini narrative is useful","Notion removed from home screen"]},
+
+// === W3: NOTES & KNOWLEDGE ===
+{w:3,d:1,p:2,title:"Your AI-Powered Notes System",wk:"Week 3 \u00b7 Notes & Knowledge",time:"30 min",dev:"iPhone",
+learn:'<p>Notes in Notion = another database to maintain. Notes with AI = you dump thoughts, AI organizes and retrieves.</p><div class="ct"><strong>The system:</strong> A Google Form for quick notes (voice or text). Apps Script + Gemini auto-tag and categorize. A "Notes" tab in your Sheet. When you need something, ask your Gem: "What did I note about the Allende contract last week?"</div>',
+ex:{t:"Design Your Notes System",s:["What types of notes do you take? Meeting notes, ideas, reminders, client info?","Create a \'Quick Note\' Google Form: one text field + optional dropdown for type.","Link to a Notes tab in your main Sheet.","Add to iPhone home screen alongside your Task form.","Think: how would you SEARCH these notes later?"],cp:"Help me design an AI-powered notes system using Google Sheets. I want to dump thoughts quickly and have AI organize and make them searchable."},
+ship:"Notes form on your home screen. Two quick-capture tools: Tasks + Notes.",
+checks:["Note types identified","Google Form created","Linked to Notes sheet","On iPhone home screen","Search strategy defined"]},
+
+{w:3,d:2,p:2,title:"Auto-Tagging & Smart Organization",wk:"Week 3 \u00b7 Notes & Knowledge",time:"45 min",dev:"Mac",
+learn:'<p>When you submit a note, Gemini should auto-tag it: what project? what topic? what action items? You just dump text; AI does the filing.</p><div class="ct">Apps Script on form submit \u2192 sends note to Gemini \u2192 extracts: tags, related project, any embedded action items (which get added to your Tasks sheet automatically), key topics for search.</div>',
+ex:{t:"Build Auto-Tagging",s:["Apps Script: on note submission, send to Gemini for analysis.","Extract: tags (3-5 keywords), project, any action items.","Write tags to the Notes sheet alongside the note.","If action items found, auto-create tasks in Active Tasks.","Test with 5 different types of notes."],cp:null},
+ship:"Notes auto-organize themselves. Action items become tasks automatically.",
+checks:["Auto-tagging extracts relevant keywords","Project assignment works","Action items become tasks","Tested with varied note types","No manual organizing needed"]},
+
+{w:3,d:3,p:2,title:"Search Your Knowledge Base",wk:"Week 3 \u00b7 Notes & Knowledge",time:"40 min",dev:"iPhone",
+learn:'<p>The whole point of notes: finding them later. Today: make your notes searchable via your Gemini Gem.</p><div class="ct">Upload or reference your Notes sheet in your Brewery Gem. Ask: "What did I note about the supplier issue?" "What were my key takeaways from the client meeting last Tuesday?" Gemini searches your notes and gives you answers.</div>',
+ex:{t:"Make Notes Searchable",s:["Open your Brewery Gem in Gemini.","Upload your Notes Google Sheet.","Ask: \'What notes do I have about [real topic]?\'","Ask: \'Summarize my notes from this week.\'","Ask: \'What action items came from my recent meeting notes?\'"],cp:null},
+ship:"Your notes are now a queryable knowledge base, not a graveyard of text.",
+checks:["Gem can read your Notes sheet","Topic search works","Time-based search works","Summaries are accurate","Actually useful for retrieval"]},
+
+{w:3,d:4,p:2,title:"Meeting Notes Workflow",wk:"Week 3 \u00b7 Notes & Knowledge",time:"30 min",dev:"iPhone",
+learn:'<p>Specific use case: meeting notes. You take rough notes during a meeting (or use voice-to-text). Gemini cleans them up, extracts action items, and distributes them.</p><div class="ct"><strong>Flow:</strong> Rough notes in Form \u2192 Gemini cleans + structures \u2192 Action items to Tasks \u2192 Clean summary saved in Notes \u2192 Optional: email summary to meeting attendees via Gmail.</div>',
+ex:{t:"Build the Meeting Notes Flow",s:["After your next real meeting, dump rough notes into your Notes form.","Check: did Gemini extract action items and add to Tasks?","Check: is the cleaned note useful and searchable?","Ask Gemini to draft an email summary of the meeting.","Bonus: set this up so the email sends automatically after notes are processed."],cp:"I just took rough meeting notes. Clean them up, extract all action items with owners and deadlines, and draft an email summary I can send to attendees."},
+ship:"Meeting notes go from rough to organized with zero manual work.",
+checks:["Rough notes processed correctly","Action items extracted","Clean summary saved","Email summary drafted","Workflow feels fast"]},
+
+{w:3,d:5,p:2,title:"Your Complete Productivity System",wk:"Week 3 \u00b7 Notes & Knowledge",time:"30 min",dev:"iPhone",
+learn:'<p>Step back and look at what you\'ve built: Tasks + Notes + Morning Review + Weekly Summary. This is your Notion replacement.</p><div class="ct"><strong>What you have:</strong><br>\u2022 Task capture: one-tap from iPhone<br>\u2022 Auto-parsing: Gemini categorizes everything<br>\u2022 Notes: dump and forget, AI organizes<br>\u2022 Morning email: priorities for today<br>\u2022 Friday email: what you accomplished<br>\u2022 Search: ask your Gem anything about your work<br><br><strong>What Notion gave you:</strong> a beautiful interface you spent hours maintaining<br><strong>What this gives you:</strong> the same data, zero maintenance, delivered to you automatically</div>',
+ex:{t:"System Review & Optimization",s:["Review your last 2 weeks: is the task system working? What\'s missing?","Review notes: are they findable? Are auto-tags accurate?","Check morning emails: useful? Too long? Missing something?","Make a list of 3 improvements to ask Gemini to implement.","Implement the top improvement today."],cp:"Review my task and notes system. Here\'s what\'s working and what\'s not. Help me fix the top 3 issues."},
+ship:"Your productivity system is now battle-tested and improving.",
+checks:["Honest 2-week review done","Identified what works and what doesn\'t","Listed 3 improvements","Implemented top improvement","System is actually replacing Notion"]},
+
+// === W4: GOOGLE WORKSPACE AI ===
+{w:4,d:1,p:2,title:"Gemini Inside Every Google App",wk:"Week 4 \u00b7 Google Workspace AI",time:"30 min",dev:"iPhone",
+learn:'<p>Gemini lives inside Sheets, Docs, Gmail, Drive. Today: discover what it can do from inside each app without leaving.</p><div class="ct"><strong>Sheets:</strong> Ask questions about your data in the side panel<br><strong>Docs:</strong> "Help me write" drafts and rewrites<br><strong>Gmail:</strong> Summarize threads, draft replies<br><strong>Drive:</strong> Search and summarize across files</div>',
+ex:{t:"Explore Gemini in Each App",s:["Sheets: open sales data, click Gemini icon, ask to summarize.","Docs: use \'Help me write\' to draft a client report.","Gmail: find a long thread, ask Gemini to summarize.","Drive: ask Gemini to find a specific document.","Star the top 3 features for your daily work."],cp:null},
+ship:"List of which in-app Gemini features actually save you time.",
+checks:["Tested in Sheets","Tested in Docs","Tested in Gmail","Tested in Drive","Top 3 features identified"]},
+
+{w:4,d:2,p:2,title:"Apps Script: Your Automation Engine",wk:"Week 4 \u00b7 Google Workspace AI",time:"45 min",dev:"Mac",
+learn:'<p>Apps Script is Google\'s free automation layer built into every Sheet. No servers, no hosting, no API keys for Google services. Gemini writes the code; you paste and run.</p><div class="ct">You already used Apps Script for your task system. Today: understand it properly. Functions, triggers, how to debug. This is the engine behind everything you\'ll build.</div>',
+ex:{t:"Apps Script Deep Dive",s:["Open any Apps Script project you\'ve created.","Ask Gemini: \'Explain how this Apps Script works, line by line, in simple terms.\'","Learn: what is a function? A trigger? How to read error logs?","Modify something small: change the email subject line, add a column.","Break it on purpose, then fix it. This is how you learn debugging."],cp:"Explain this Google Apps Script to me like I\'m a business executive. I need to understand what each section does so I can modify it and fix problems."},
+ship:"You can read, understand, and make small changes to Apps Script. That\'s all you need.",
+checks:["Read through an existing script with Gemini\'s help","Understand functions and triggers","Made a small modification successfully","Broke and fixed something","Can read error logs"]},
+
+{w:4,d:3,p:2,title:"Scheduled Reports from Your Data",wk:"Week 4 \u00b7 Google Workspace AI",time:"50 min",dev:"Mac",
+learn:'<p>Your sales analysis from Week 1 was manual (paste data into Gemini). Today: automate it entirely inside Google Sheets.</p><div class="ct">Apps Script reads your sales data \u2192 calculates underperformers, trends, inactive clients \u2192 calls Gemini API for natural language insights \u2192 writes to an Analysis tab \u2192 emails you. All on a schedule.</div>',
+ex:{t:"Build Your Automated Sales Analysis",s:["Take your Week 1 Day 5 pipeline prompt.","Ask Gemini to write Apps Script that does the same analysis programmatically.","Add Gemini API call for natural language recommendations.","Write results to an \'AI Analysis\' tab with timestamps.","Add email delivery. Set daily trigger."],cp:null},
+ship:"Your sales analysis runs automatically every morning. Zero manual work.",
+checks:["Script analyzes sales data","Gemini API adds insights","Results in AI Analysis tab","Email delivery works","Daily trigger active"]},
+
+{w:4,d:4,p:2,title:"Google Sheets as a Database",wk:"Week 4 \u00b7 Google Workspace AI",time:"40 min",dev:"Mac",
+learn:'<p>You\'re using Sheets for tasks, notes, and sales data. Today: learn the patterns that make Sheets work well as a database.</p><div class="ct"><strong>Best practices:</strong><br>\u2022 One row = one record. Always.<br>\u2022 First row = headers. Never skip.<br>\u2022 Consistent date format (YYYY-MM-DD works best)<br>\u2022 No merged cells. Ever.<br>\u2022 Named ranges for key data areas<br>\u2022 Separate tabs for different data types<br>\u2022 An \'Archive\' tab for old data (keeps active sheets fast)</div>',
+ex:{t:"Optimize Your Sheets",s:["Audit all your Google Sheets: tasks, notes, sales data.","Fix any violations: merged cells, inconsistent dates, missing headers.","Add named ranges to your most-used data areas.","Archive old data (move to Archive tab, keep active sheet lean).","Ask Gemini: \'Review this Sheet structure and suggest improvements for use as a database.\'"],cp:null},
+ship:"Clean, optimized Sheets that your scripts can rely on.",
+checks:["Audited all sheets","Fixed structural issues","Named ranges added","Old data archived","Gemini review done"]},
+
+{w:4,d:5,p:2,title:"Build a Dashboard Sheet",wk:"Week 4 \u00b7 Google Workspace AI",time:"45 min",dev:"Mac",
+learn:'<p>One Sheet to rule them all. A dashboard tab that pulls live data from your other sheets: tasks due, sales highlights, system health.</p><div class="ct">Apps Script populates a Dashboard tab every morning. When you open the Sheet, everything is there. You can also share this with your team.</div>',
+ex:{t:"Build the Dashboard",s:["Create a \'Dashboard\' tab in your main Sheet.","Apps Script pulls: tasks due today, sales alerts, recent notes.","Format with clear sections and color coding.","Schedule to refresh at 6 AM.","Open on your iPhone \u2014 is it useful at a glance?"],cp:null},
+ship:"A single view of your entire work system. Your command center.",
+checks:["Dashboard tab created","Pulls from tasks, sales, notes","Formatted clearly","Scheduled refresh","Useful on mobile"]},
+
+// === W5: SALES INTELLIGENCE ===
+{w:5,d:1,p:2,title:"Design Your Sales Agent",wk:"Week 5 \u00b7 Sales Intelligence Agent",time:"30 min",dev:"iPhone",
+learn:'<p>Your Week 4 analysis was automated but basic. Now: a proper agent with business rules, multi-source data, and smart delivery.</p><div class="ct">Agent spec: what 5 questions must it answer daily? What data does it need? What rules define underperformance? What format works for a 2-minute morning read?</div>',
+ex:{t:"Write the Agent Spec",s:["List every sales question you ask weekly.","Narrow to top 5.","For each: data source, logic, output.","Write the full spec.","Would a human analyst follow these instructions exactly?"],cp:"Help me spec a Sales Intelligence Agent for Cervecer\u00eda Allende craft brewery."},
+ship:"Agent spec saved. Blueprint for the week.",
+checks:["Listed weekly questions","Top 5 prioritized","Data/logic/output per question","Spec is complete and clear"]},
+
+{w:5,d:2,p:2,title:"Multi-Source Data Pipeline",wk:"Week 5 \u00b7 Sales Intelligence Agent",time:"50 min",dev:"Mac",
+learn:'<p>Real analysis needs multiple sources: sales, clients, targets. Build a pipeline that reads all of them.</p><div class="ct">Apps Script reads from multiple Sheets/files. Cross-reference sales to client details. Handle messy data gracefully.</div>',
+ex:{t:"Build Multi-Source Pipeline",s:["Identify all data sources: sales, clients, targets.","Apps Script reading from multiple sheets.","Add data cleaning.","Cross-reference sales with client details.","Test with your messiest data."],cp:null},
+ship:"Robust pipeline reading all your data sources.",
+checks:["Multiple sources connected","Data cleaning works","Cross-referencing works","Handles messy data"]},
+
+{w:5,d:3,p:2,title:"Business Rules + Gemini Insights",wk:"Week 5 \u00b7 Sales Intelligence Agent",time:"50 min",dev:"Mac",
+learn:'<p>Combine rule-based analysis (Apps Script does the math) with AI insights (Gemini writes the recommendations). Your 20+ years of experience encoded as rules; Gemini adds the narrative.</p>',
+ex:{t:"Build the Intelligence Layer",s:["Encode all rules from your spec into Apps Script.","After rule-based analysis, send results to Gemini API.","Gemini generates: natural language brief, specific rep messages, priority ranking with reasoning.","Test: are the insights actionable? Would you forward them to your reps?","Iterate until the output is genuinely useful."],cp:null},
+ship:"Agent combines your business rules with AI-generated recommendations.",
+checks:["All rules encoded","Gemini insights are specific","Rep messages are actionable","Tested with real data","Output is genuinely useful"]},
+
+{w:5,d:4,p:2,title:"Production-Ready Sales Agent",wk:"Week 5 \u00b7 Sales Intelligence Agent",time:"45 min",dev:"Mac",
+learn:'<p>Polish: error handling, clean email format, conditional sections, status logging.</p><div class="ct">A production agent: handles errors gracefully, tells you when something breaks, delivers clean 2-minute briefs.</div>',
+ex:{t:"Make It Production-Ready",s:["Add try-catch error handling to every function.","Add a \'System Status\' row logging each run.","Polish email: conditional sections, clean formatting.","Test by intentionally breaking things.","Deploy with daily trigger."],cp:null},
+ship:"Sales Agent runs reliably every morning. Use it for real.",
+checks:["Error handling complete","Status logging works","Email is polished","Handles failures gracefully","Daily trigger active"]},
+
+{w:5,d:5,p:2,title:"Connect Sales Agent to Your Task System",wk:"Week 5 \u00b7 Sales Intelligence Agent",time:"40 min",dev:"Mac",
+learn:'<p>When the Sales Agent finds an opportunity or flags an inactive client, it should create a task in your system automatically.</p><div class="ct">Agent flags opportunity \u2192 writes task to Active Tasks \u2192 morning review picks it up. Full loop.</div>',
+ex:{t:"Connect the Loop",s:["Define: which sales insights become tasks?","Add task creation to sales agent script.","Tasks include: action, client, context from analysis.","Run and verify tasks appear.","Morning review shows agent-created tasks."],cp:null},
+ship:"Sales Agent creates tasks. Task Agent reviews them. You execute.",
+checks:["Trigger rules defined","Tasks auto-created","Include full context","Appear in task sheet","Morning review shows them"]},
+
+// === W6: BREWING OPS ===
+{w:6,d:1,p:2,title:"Brewing Data Model + Form",wk:"Week 6 \u00b7 Brewing Ops Tracker",time:"40 min",dev:"Mac",
+learn:'<p>Track every batch properly. Google Sheet for data, Google Form for mobile entry from the brewery floor.</p><div class="ct">Columns: batch ID, style, date, ingredients (type + qty), fermentation start, fermentation target, actual days, yield, cost, quality notes. Form on your phone for quick entry.</div>',
+ex:{t:"Build the Brewing Tracker",s:["Create Brewing Sheet with proper columns.","Create Google Form for batch entry.","Link Form to Sheet.","Enter 5-10 historical batches.","Add Form to iPhone home screen."],cp:"Help me design a brewing batch tracker: Google Sheet columns + Google Form for mobile entry. For Cervecer\u00eda Allende craft brewery."},
+ship:"Brewing tracker with mobile form. Enter batches from the brewery floor.",
+checks:["Sheet structure complete","Form created and linked","Historical data entered","Form on home screen"]},
+
+{w:6,d:2,p:2,title:"Batch Analysis Agent",wk:"Week 6 \u00b7 Brewing Ops Tracker",time:"50 min",dev:"Mac",
+learn:'<p>Compare every new batch to history. Flag: too much malt? Fermentation off? Cost per liter wrong?</p><div class="ct">Trigger on form submission. Compare to last 10 batches of same style. Flag anomalies. Add Gemini for context.</div>',
+ex:{t:"Build the Analyst",s:["Apps Script comparing new batch to last 10 of same style.","Flag malt >10% above average.","Flag fermentation >2 days different.","Add cost analysis.","Email you a batch report after each entry."],cp:null},
+ship:"Every new batch auto-analyzed against your history.",
+checks:["Historical comparison works","Malt anomalies flagged","Fermentation anomalies flagged","Cost analysis works","Batch report emailed"]},
+
+{w:6,d:3,p:2,title:"Production vs. Demand",wk:"Week 6 \u00b7 Brewing Ops Tracker",time:"45 min",dev:"Mac",
+learn:'<p>Link brewing data to sales data. Are you producing what the market wants?</p><div class="ct">"Golden Ale outsells IPA 3:1 but you brew them equally. Consider adjusting." This insight requires connecting both datasets.</div>',
+ex:{t:"Connect Production + Sales",s:["Apps Script reading both sales and brewing sheets.","Build production vs. demand analysis.","Gemini generates recommendations.","Add to your weekly report.","Test with real data from both sources."],cp:null},
+ship:"Production decisions informed by sales data. Real business intelligence.",
+checks:["Both datasets connected","Demand vs production comparison","AI recommendations generated","Added to weekly report","Tested with real data"]},
+
+{w:6,d:4,p:2,title:"Brewing Queries via Gemini",wk:"Week 6 \u00b7 Brewing Ops Tracker",time:"30 min",dev:"iPhone",
+learn:'<p>Make your brewing data conversational. Ask your Gem questions and get answers from your actual data.</p><div class="ct">"How many days has Golden Ale averaged in fermentation?" "What\'s my most expensive beer?" "Show malt usage trend for IPA over the last 6 months."</div>',
+ex:{t:"Query Your Brewing Data",s:["Upload your Brewing Sheet to your Brewery Gem.","Test: average queries, historical lookups, cost comparisons.","Test: trend questions.","Test: \'What should I brew next based on sales and inventory?\'","Identify the 3 questions you\'ll ask most often."],cp:null},
+ship:"Brewing data is queryable in natural language via your Gem.",
+checks:["Gem reads brewing data","Averages and lookups work","Trends work","Cross-data questions work","Top 3 questions identified"]},
+
+{w:6,d:5,p:2,title:"Unified Morning Email",wk:"Week 6 \u00b7 Brewing Ops Tracker",time:"40 min",dev:"Mac",
+learn:'<p>Merge everything into ONE morning email: tasks + sales + brewing + calendar. Read in 3 minutes with coffee.</p><div class="ct">One trigger at 6 AM. Runs all agents. Sends one email with 4 sections. Your complete morning briefing.</div>',
+ex:{t:"Build the Unified Brief",s:["Merge all agent email outputs into one script.","Section 1: Today\'s tasks + priorities.","Section 2: Sales intelligence.","Section 3: Brewing alerts (if any).","Schedule single trigger at 6 AM."],cp:null},
+ship:"One email every morning = your control center.",
+checks:["Single merged email","Tasks section works","Sales section works","Brewing section works","6 AM trigger active"]},
+
+// === W7: ADVANCED INTEGRATION ===
+{w:7,d:1,p:3,title:"Gmail Automation",wk:"Week 7 \u00b7 Advanced Integration",time:"50 min",dev:"Mac",
+learn:'<p>Your analyst emails you sales reports. Apps Script reads Gmail, downloads attachments, processes them. Zero manual work.</p><div class="ct"><strong>GmailApp</strong> in Apps Script: search emails by sender/subject, download attachments, parse data. Your sales agent starts from your inbox.</div>',
+ex:{t:"Connect Email to Sales Agent",s:["Write Apps Script using GmailApp to find sales report emails.","Download Excel attachment.","Parse into your sales Sheet.","Chain: email \u2192 parse \u2192 analyze \u2192 brief.","Add to daily trigger."],cp:null},
+ship:"Sales pipeline starts from your inbox automatically.",
+checks:["GmailApp search works","Attachment download works","Data parsing works","Full pipeline automated","In daily trigger"]},
+
+{w:7,d:2,p:3,title:"Google Calendar Integration",wk:"Week 7 \u00b7 Advanced Integration",time:"45 min",dev:"Mac",
+learn:'<p>Your agents know about deadlines and follow-ups. Connect to Google Calendar: auto-schedule time for important tasks.</p><div class="ct"><strong>CalendarApp:</strong> create events from high-priority tasks. Sales follow-ups get calendar blocks. Don\'t overfill \u2014 only the important stuff.</div>',
+ex:{t:"Connect Agents to Calendar",s:["Apps Script: CalendarApp creates events for high-priority tasks.","Define rules: what gets a calendar event vs. stays as a task.","Test: create a high-priority task, check calendar.","Add follow-up scheduling from sales agent.","Review: calendar reflects agent intelligence?"],cp:null},
+ship:"Calendar automatically reflects your priorities.",
+checks:["CalendarApp works","Rules defined","Tasks create events","Sales follow-ups scheduled","Calendar not overfilled"]},
+
+{w:7,d:3,p:3,title:"Google Drive Search Agent",wk:"Week 7 \u00b7 Advanced Integration",time:"50 min",dev:"Mac",
+learn:'<p>Search your Google Drive programmatically to answer business questions from your documents.</p><div class="ct"><strong>DriveApp:</strong> search by name, type, date. Read document contents. Combined with Gemini: "What malt cost was in the last Allende contract?"</div>',
+ex:{t:"Build Drive Search",s:["Apps Script: DriveApp searches for files matching a query.","Read document contents.","Send to Gemini for analysis.","Test: find and read a real contract/document.","Add to your Brewery Gem as a capability."],cp:null},
+ship:"Agent answers questions from your Drive documents.",
+checks:["DriveApp search works","Can read document content","Gemini analyzes found docs","Tested with real queries","Integrated with Gem"]},
+
+{w:7,d:4,p:3,title:"Map & Build Payment Prep Agent",wk:"Week 7 \u00b7 Advanced Integration",time:"60 min",dev:"Mac",
+learn:'<p>Your 2-4 hour payment process becomes 20 minutes. Agent reads the email, parses the Excel, generates a review sheet.</p><div class="ct"><strong>You approve. You pay. But the prep is instant.</strong><br><br>GmailApp finds payment email \u2192 parses Excel \u2192 writes to Payment Review sheet with checkboxes \u2192 flags unusual amounts \u2192 adds summary.</div>',
+ex:{t:"Build Payment Prep",s:["Map every step of your current process first.","Build: GmailApp finds payment email, downloads Excel.","Parse: extract supplier, amount, bank account per row.","Write to Payment Review sheet with approval checkboxes.","Flag amounts >2x typical. Add totals summary."],cp:null},
+ship:"Next payment cycle: use it. Target under 30 minutes.",
+checks:["Process fully mapped","Email parsing works","Data extracted correctly","Review sheet with checkboxes","Unusual amounts flagged"]},
+
+{w:7,d:5,p:3,title:"System Health & Error Monitoring",wk:"Week 7 \u00b7 Advanced Integration",time:"40 min",dev:"Mac",
+learn:'<p>You have multiple agents running daily. Today: make sure you know when something breaks.</p><div class="ct">System Health sheet: each agent logs its run status. If anything fails: separate alert email. Health summary in your morning brief.</div>',
+ex:{t:"Build System Monitoring",s:["Create System Health sheet.","Each agent logs: timestamp, status, errors.","If any agent fails: send separate alert email.","Add health summary to morning email.","Test by intentionally breaking each agent."],cp:null},
+ship:"Your system monitors itself. You know instantly when something breaks.",
+checks:["Health sheet created","All agents log status","Alert emails work","Health in morning brief","Tested with failures"]},
+
+// === W8: CAPSTONE ===
+{w:8,d:1,p:4,title:"Choose Your Capstone Problem",wk:"Week 8 \u00b7 Build From Scratch",time:"30 min",dev:"iPhone",
+learn:'<p>You\'ve built 5+ agents with guidance. Now build one alone. Pick a real unsolved problem.</p><div class="ct">Something repetitive, time-consuming, and pattern-based. Your best candidates are things you do weekly that follow the same steps.</div>',
+ex:{t:"Pick Your Problem",s:["List 3-5 problems in your CORe or Allende work.","Evaluate: frequency, time, data structure.","Pick best ROI.","Write problem statement.","Write solution description."],cp:"Help me evaluate these automation candidates and pick the best one."},
+ship:"Capstone selected.",
+checks:["Listed candidates","Evaluated each","Selected best ROI","Problem stated","Solution described"]},
+
+{w:8,d:2,p:4,title:"Design the Spec",wk:"Week 8 \u00b7 Build From Scratch",time:"45 min",dev:"iPhone + Mac",
+learn:'<p>You know the pattern: data \u2192 processing \u2192 rules \u2192 Gemini \u2192 output \u2192 delivery. Write the full spec yourself.</p>',
+ex:{t:"Write the Spec",s:["Data sources.","Processing steps.","Business rules.","Output + delivery.","Error handling."],cp:null},
+ship:"Complete spec ready for building.",
+checks:["Sources defined","Processing planned","Rules specified","Output designed","Errors handled"]},
+
+{w:8,d:3,p:4,title:"Build Day 1 \u2014 Core",wk:"Week 8 \u00b7 Build From Scratch",time:"60 min",dev:"Mac",
+learn:'<p>Build day. Get it working. Ugly is fine.</p><div class="ct">Have Gemini write the Apps Script from your spec. Data in \u2192 processing \u2192 data out.</div>',
+ex:{t:"Build the Core",s:["Open Apps Script. Gemini writes from your spec.","Data connection.","Processing logic.","Output.","End-to-end test."],cp:null},
+ship:"Working version. Polish tomorrow.",
+checks:["Data works","Processing correct","Output appears","E2E test passed"]},
+
+{w:8,d:4,p:4,title:"Build Day 2 \u2014 Polish",wk:"Week 8 \u00b7 Build From Scratch",time:"60 min",dev:"Mac",
+learn:'<p>Make it robust. Edge cases, error handling, clean output.</p>',
+ex:{t:"Harden",s:["Test with bad data.","Error handling + alerts.","Polish output.","Add logging.","Final test."],cp:null},
+ship:"Production-ready agent.",
+checks:["Handles bad data","Errors handled","Output polished","Logging works","Final test passed"]},
+
+{w:8,d:5,p:4,title:"Deploy & Reflect",wk:"Week 8 \u00b7 Build From Scratch",time:"45 min",dev:"Mac + iPhone",
+learn:'<p>Final day. Eight weeks ago: AI as Google. Now: 6+ agents running your business in Google Workspace. All free or near-free.</p><div class="ct"><strong>Your system:</strong> Google Sheets (data) + Apps Script (automation) + Gemini API (intelligence) + Gmail (delivery) + Calendar (scheduling) + Forms (input). No Python. No servers. No monthly fees beyond what you already pay.</div>',
+ex:{t:"Deploy and Reflect",s:["Schedule capstone agent.","Write reflection: built, learned, surprised by.","List 3 next agent ideas.","Share with someone.","Celebrate."],cp:"I completed 8 weeks building AI agents in Google Workspace. Help me reflect and plan my next 3 projects."},
+ship:"Capstone live. You are an AI builder.",
+checks:["Deployed","Reflected","3 ideas listed","Shared","Celebrated"]}
+];
+
+// === STATE with robust persistence ===
+var SK='aipath_v4',S;
+function dS(){return{cur:0,done:[],skip:[],streak:0,last:null,start:null,cks:{},notif:false}}
+
+function ld(){
+  S=null;
+  // Try multiple storage methods
+  try{var s=localStorage.getItem(SK);if(s){S=JSON.parse(s)}}catch(e){}
+  if(!S){try{var c=document.cookie.match(new RegExp('(^| )'+SK+'=([^;]+)'));if(c){S=JSON.parse(decodeURIComponent(c[2]))}}catch(e){}}
+  if(!S)S=dS();
+  // Ensure all fields exist
+  if(!S.done)S.done=[];if(!S.skip)S.skip=[];if(!S.cks)S.cks={};
+  if(S.cur===undefined)S.cur=0;if(!S.streak)S.streak=0;
+}
+
+function sv(){
+  try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}
+  // Backup to cookie (survives some edge cases)
+  try{var d=new Date();d.setFullYear(d.getFullYear()+1);document.cookie=SK+'='+encodeURIComponent(JSON.stringify(S))+';expires='+d.toUTCString()+';path=/;SameSite=Strict'}catch(e){}
+}
+
+ld();
+
+var vI=null; // viewing index
+
+function pn(p){return{1:'Foundations',2:'Building Real Tools',3:'Advanced Integration',4:'Autonomy'}[p]||''}
+function hdr(){var d=C[S.cur]||C[C.length-1];var p=Math.round(S.done.length/C.length*100);document.getElementById('pl').textContent='Phase '+d.p+' \u2014 '+pn(d.p);document.getElementById('pp').textContent=p+'%';document.getElementById('pb').style.width=p+'%';document.getElementById('sn').textContent=S.streak}
+
+function rT(){
+  var d=C[S.cur];
+  if(!d){document.getElementById('tc').innerHTML='<div class="te">COMPLETE</div><div class="ttl">You finished the AI Mastery Path!</div><p style="color:var(--tm);line-height:1.6">All 40 days. You\'re an AI builder now.</p>';document.getElementById('skb').style.display='none';return}
+  document.getElementById('tw').textContent=d.wk;
+  document.getElementById('tt').textContent='Day '+(S.cur+1)+': '+d.title;
+  document.getElementById('tm').innerHTML='\u23f1 '+d.time;
+  document.getElementById('td').innerHTML=(d.dev==='iPhone'?'\ud83d\udcf1':d.dev==='Mac'?'\ud83d\udcbb':'\ud83d\udcf1\ud83d\udcbb')+' '+d.dev;
+  var b=document.getElementById('sb');
+  var dn=S.done.indexOf(S.cur)>-1;
+  b.textContent=dn?'Review Lesson':'Start Lesson';b.className=dn?'bs':'bp';
+  document.getElementById('skb').style.display=dn?'none':'block';
+  document.getElementById('sd').textContent=S.done.length;
+  document.getElementById('sle').textContent=C.length-S.done.length;
+  document.getElementById('sw').textContent='W'+d.w;
+}
+
+function rL(i){
+  vI=i;var d=C[i];
+  document.getElementById('lp').disabled=(i<=0);
+  document.getElementById('ln').disabled=(i>=C.length-1);
+  var st=S.done.indexOf(i)>-1?' \u2014 \u2713 Completed':S.skip.indexOf(i)>-1?' \u2014 Skipped':'';
+  document.getElementById('ldi').textContent='Day '+(i+1)+' of '+C.length+st;
+  var h='<div class="lb"><span class="bla le">LEARN \u00b7 10 MIN</span><div class="lt">'+d.learn+'</div></div>';
+  h+='<div class="lb"><span class="bla do">DO \u00b7 15-40 MIN</span><div class="ex"><h3>'+d.ex.t+'</h3><ol class="ol">';
+  for(var j=0;j<d.ex.s.length;j++)h+='<li>'+d.ex.s[j]+'</li>';
+  h+='</ol>';
+  if(d.ex.cp){h+='<a class="gb" href="https://gemini.google.com" target="_blank">Open Gemini \u2192</a>';h+='<div class="ph"><strong>Starter prompt:</strong> "'+d.ex.cp+'"</div>'}
+  h+='</div></div>';
+  h+='<div class="lb"><span class="bla sh">SHIP \u00b7 5-10 MIN</span><div class="lt"><p>'+d.ship+'</p></div></div>';
+  document.getElementById('lbd').innerHTML=h;
+  var ck=S.cks[i]||[],ch='';
+  for(var k=0;k<d.checks.length;k++)ch+='<div class="ckr '+(ck[k]?'dn':'')+'" onclick="tC('+i+','+k+')"><div class="ckb">\u2713</div><span class="ckt">'+d.checks[k]+'</span></div>';
+  document.getElementById('cka').innerHTML=ch;
+  uDB(i);
+}
+
+function tC(di,ci){var d=C[di];if(!S.cks[di])S.cks[di]=[];while(S.cks[di].length<d.checks.length)S.cks[di].push(false);S.cks[di][ci]=!S.cks[di][ci];sv();rL(di)}
+
+function uDB(i){var d=C[i],ck=S.cks[i]||[],ok=ck.length===d.checks.length&&ck.every(function(c){return c}),b=document.getElementById('db');
+  if(S.done.indexOf(i)>-1){b.textContent='\u2713 Completed';b.className='cb ad'}
+  else if(ok){b.textContent='Complete Day '+(i+1);b.className='cb ry'}
+  else{b.textContent='Complete all tasks first';b.className='cb'}}
+
+function rR(){
+  var h='',cp=0,w={};
+  for(var i=0;i<C.length;i++){var d=C[i];if(!w[d.w])w[d.w]={p:d.p,wk:d.wk,ds:[]};w[d.w].ds.push({i:i,t:d.title})}
+  var ks=Object.keys(w);
+  for(var k=0;k<ks.length;k++){
+    var wn=ks[k],wk=w[wn];
+    if(wk.p!==cp){if(cp>0)h+='</div>';cp=wk.p;h+='<div class="pg"><div class="phd"><span class="pbd p'+cp+'">Phase '+cp+'</span><span class="pnm">'+pn(cp)+'</span></div>'}
+    var dn=0,ic=false;for(var m=0;m<wk.ds.length;m++){if(S.done.indexOf(wk.ds[m].i)>-1)dn++;if(wk.ds[m].i===S.cur)ic=true}
+    h+='<div class="wc '+(dn===wk.ds.length?'cm':ic?'cu':'')+'" onclick="tW('+wn+')"><span class="wi">'+(({1:'\ud83d\udcf1',2:'\ud83d\udd27',3:'\ud83d\udd17',4:'\ud83d\ude80'})[wk.p]||'')+'</span><div class="wif"><div class="wn">Week '+wn+'</div><div class="wd">'+wk.ds.length+' days</div></div><span class="ws">'+(dn===wk.ds.length?'\u2713 Done':dn+'/'+wk.ds.length)+'</span></div>';
+    h+='<div class="dl" id="wd'+wn+'" style="display:none">';
+    for(var n=0;n<wk.ds.length;n++){var dy=wk.ds[n],dc=S.done.indexOf(dy.i)>-1?'dn':S.skip.indexOf(dy.i)>-1?'sk':'';
+      h+='<div class="dr '+dc+'" onclick="event.stopPropagation();openL('+dy.i+')"><div class="di">'+(dc==='dn'?'\u2713':dc==='sk'?'\u2192':'')+'</div><span class="dt">Day '+(dy.i+1)+': '+dy.t+'</span></div>'}
+    h+='</div>'}
+  if(cp>0)h+='</div>';
+  document.getElementById('rbd').innerHTML=h;
+}
+
+function tW(n){var e=document.getElementById('wd'+n);if(e)e.style.display=e.style.display==='none'?'block':'none'}
+
+function rS(){
+  document.getElementById('xd').textContent=S.done.length;
+  document.getElementById('xs').textContent=S.skip.length;
+  document.getElementById('xk').textContent=S.streak;
+  document.getElementById('xst').textContent=S.start?new Date(S.start).toLocaleDateString():'\u2014';
+  document.getElementById('nl').textContent=S.notif?'On \u2713':'Enable'}
+
+function nav(n){
+  for(var i=0;i<4;i++){var s=document.getElementById('s'+i);if(s)s.classList.remove('on')}
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('s'+n).classList.add('on');
+  document.getElementById('n'+n).classList.add('on');
+  if(n===0)rT();if(n===2)rR();if(n===3)rS();window.scrollTo(0,0)}
+
+function openL(i){if(!S.start){S.start=new Date().toISOString();sv()}
+  for(var j=0;j<4;j++){var s=document.getElementById('s'+j);if(s)s.classList.remove('on')}
+  document.getElementById('s1').classList.add('on');rL(i);window.scrollTo(0,0)}
+
+function goH(){for(var i=0;i<4;i++){var s=document.getElementById('s'+i);if(s)s.classList.remove('on')}document.getElementById('s0').classList.add('on');rT()}
+function pvL(){if(vI>0){rL(vI-1);window.scrollTo(0,0)}}
+function nxL(){if(vI<C.length-1){rL(vI+1);window.scrollTo(0,0)}}
+
+function skipDay(){
+  if(S.skip.indexOf(S.cur)===-1)S.skip.push(S.cur);
+  if(S.cur<C.length-1)S.cur++;
+  sv();hdr();rT()}
+
+function finD(){
+  var i=vI,d=C[i],ck=S.cks[i]||[];
+  if(!(ck.length===d.checks.length&&ck.every(function(c){return c}))||S.done.indexOf(i)>-1)return;
+  S.done.push(i);
+  var si=S.skip.indexOf(i);if(si>-1)S.skip.splice(si,1);
+  if(i===S.cur&&S.cur<C.length-1)S.cur++;
+  // Also advance past any completed days
+  while(S.cur<C.length-1&&S.done.indexOf(S.cur)>-1)S.cur++;
+  var td=new Date().toDateString(),la=S.last?new Date(S.last).toDateString():null,yd=new Date(Date.now()-864e5).toDateString();
+  if(la===yd||la===td){if(la!==td)S.streak++}else S.streak=1;
+  S.last=new Date().toISOString();
+  sv();
+  document.getElementById('os').textContent=S.streak;
+  document.getElementById('ot').textContent=S.done.length+'/'+C.length;
+  var nx=C[S.cur];
+  document.getElementById('om').textContent=nx?'Next: '+nx.title:'You finished everything!';
+  document.getElementById('ov').classList.add('on');hdr()}
+
+function clOv(){document.getElementById('ov').classList.remove('on');goH()}
+function eNot(){if('Notification' in window)Notification.requestPermission().then(function(p){if(p==='granted'){S.notif=true;sv();rS()}});else alert('Not supported.')}
+function resetA(){if(confirm('Reset all progress? Cannot be undone.')){S=dS();sv();hdr();nav(0)}}
+
+// Auto-save on page visibility change (catches app backgrounding)
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')sv()});
+// Also save periodically
+setInterval(sv,30000);
+
+hdr();rT();
+</script>
+</body>
+</html>
